@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breakthrough SaaS Growth — with The Jasons</title>
+<meta name="description" content="A podcast where Jason Noble and Jason Whitehead explore customer success, SaaS growth, and the future of technology with industry leaders and innovators.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #080d1a;
+    --bg2:       #0f1626;
+    --bg3:       #141d2e;
+    --surface:   #111827;
+    --teal:      #28c3ff;
+    --teal-mid:  #1aa7e0;
+    --teal-deep: #0a2a3a;
+    --teal-dim:  rgba(40,195,255,0.12);
+    --text:      #f0ede6;
+    --text-mid:  #8a8782;
+    --text-dim:  #6c7484;
+    --border:    rgba(255,255,255,0.07);
+    --border2:   rgba(255,255,255,0.13);
+    --serif:     'Instrument Serif', Georgia, serif;
+    --sans:      'DM Sans', system-ui, sans-serif;
+    --radius:    12px;
+    --max:       1280px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.4; }
+    50%      { opacity: 0.7; }
+  }
+
+  .anim-1 { animation: fadeUp 0.7s ease both; }
+  .anim-2 { animation: fadeUp 0.7s 0.1s ease both; }
+  .anim-3 { animation: fadeUp 0.7s 0.2s ease both; }
+  .anim-4 { animation: fadeUp 0.7s 0.3s ease both; }
+  .anim-5 { animation: fadeUp 0.7s 0.4s ease both; }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(8,13,26,0.85);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .logo span {
+    color: var(--teal);
+    font-style: italic;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--teal-mid) 0%, var(--teal) 100%);
+    color: #062134;
+    padding: 9px 20px;
+    border-radius: 24px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    white-space: nowrap;
+    box-shadow: 0 0 0 0 rgba(40,195,255,0);
+  }
+
+  .nav-cta:hover {
+    background: linear-gradient(135deg, #1fb6f2 0%, #4fd0ff 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(40,195,255,0.22);
+  }
+
+  .nav-hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--text-mid);
+    margin: 5px 0;
+    transition: all 0.2s;
+  }
+
+  #hero {
+    padding: 72px 0 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 700px;
+    height: 600px;
+    background: radial-gradient(ellipse at center, rgba(40,195,255,0.16) 0%, transparent 70%);
+    animation: glow-pulse 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    bottom: -200px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(ellipse at center, rgba(40,195,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.9fr);
+    gap: 44px;
+    align-items: start;
+  }
+
+  .hero-media {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-height: 100%;
+  }
+
+  .hero-logo-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(40,195,255,0.22);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    max-width: 420px;
+    align-self: flex-start;
+  }
+
+  .hero-logo-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 24px;
+  }
+
+  .hero-h1 {
+    font-family: var(--serif);
+    font-size: clamp(52px, 7vw, 84px);
+    line-height: 1.08;
+    font-weight: 400;
+    margin-bottom: 28px;
+    max-width: 760px;
+  }
+
+  .hero-h1 em {
+    color: var(--teal);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-mid);
+    max-width: 560px;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--teal-mid) 0%, var(--teal) 100%);
+    color: #062134;
+    padding: 14px 28px;
+    border-radius: 32px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 0 0 0 rgba(40,195,255,0);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #1fb6f2 0%, #4fd0ff 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(40,195,255,0.3);
+  }
+
+  .btn-primary svg { flex-shrink: 0; }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-mid);
+    text-decoration: none;
+    border-bottom: 1px solid var(--text-dim);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--text);
+    border-color: var(--text-mid);
+  }
+
+  .stats-bar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 40px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-top: 56px;
+    margin-bottom: 36px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.16);
+  }
+
+  .stat-item {
+    flex: 1;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 42px;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-mid);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 48px;
+    background: var(--border);
+    margin: 0 40px;
+    flex-shrink: 0;
+  }
+
+  .stat-platforms {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-left: auto;
+  }
+
+  .platform-pill {
+    font-size: 13px;
+    padding: 7px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    color: var(--text-mid);
+    transition: all 0.2s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .platform-pill:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: var(--teal-dim);
+  }
+
+  .platform-pill.primary {
+    background: var(--teal-dim);
+    border-color: rgba(40,195,255,0.35);
+    color: var(--teal);
+  }
+
+  section { padding: 56px 0; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 230, 0.42);
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--text-mid);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  #episodes { background: var(--bg2); }
+
+  .episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+  }
+
+  .ep-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: border-color 0.25s, transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+  }
+
+  .ep-card:hover {
+    border-color: rgba(40,195,255,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(0,0,0,0.14);
+  }
+
+  .ep-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ep-num {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .ep-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .ep-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    background: var(--teal-dim);
+    color: var(--teal);
+    border: 1px solid rgba(40,195,255,0.2);
+    letter-spacing: 0.02em;
+  }
+
+  .ep-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .ep-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .ep-player { margin-top: 4px; }
+
+  .ep-player iframe {
+    border-radius: 10px;
+    width: 100%;
+    border: none;
+  }
+
+  .ep-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .ep-link {
+    font-size: 13px;
+    color: var(--text-mid);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s;
+  }
+
+  .ep-link:hover { color: var(--teal); }
+
+  #hosts { background: var(--bg); }
+
+  .hosts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .host-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .host-card:hover {
+    border-color: var(--border2);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+  }
+
+  .host-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .host-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--teal-deep);
+    border: 1px solid rgba(40,195,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--teal);
+    flex-shrink: 0;
+  }
+
+  .host-name {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .host-title {
+    font-size: 13px;
+    color: var(--text-mid);
+    font-weight: 300;
+  }
+
+  .host-bio {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    font-weight: 300;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+
+  .host-links {
+    display: flex;
+    gap: 14px;
+  }
+
+  .host-link {
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s;
+  }
+
+  .host-link:hover { color: var(--teal); }
+
+  #waitlist { background: var(--bg2); }
+
+  .newsletter-inner {
+    background: linear-gradient(135deg, rgba(40,195,255,0.12) 0%, rgba(10,42,58,0.24) 100%);
+    border: 1px solid rgba(40,195,255,0.2);
+    border-radius: 16px;
+    padding: 56px 64px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .nl-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 400;
+    margin-bottom: 12px;
+    line-height: 1.15;
+  }
+
+  .nl-sub {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 440px;
+  }
+
+  .nl-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 300px;
+  }
+
+  .nl-note {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: center;
+  }
+
+  #suggest { background: var(--bg); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .info-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .info-card .section-label { margin-bottom: 20px; }
+  .info-card .section-title { font-size: 28px; margin-bottom: 12px; }
+
+  .info-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 24px 0 32px;
+  }
+
+  .info-list li {
+    font-size: 14px;
+    color: var(--text-mid);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .info-list li::before {
+    content: '→';
+    color: var(--teal);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .suggest-form,
+  .sponsor-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: auto;
+  }
+
+  .suggest-form .section-sub,
+  .sponsor-form .section-sub {
+    margin-bottom: 0;
+    max-width: none;
+  }
+
+  .suggest-form .btn-primary,
+  .sponsor-form .btn-primary {
+    margin-top: auto;
+    align-self: stretch;
+    justify-content: center;
+  }
+
+  #sponsor { background: var(--bg2); }
+
+  .sponsor-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .sponsor-stat {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    text-align: center;
+  }
+
+  .sponsor-stat-num {
+    font-family: var(--serif);
+    font-size: 34px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .sponsor-stat-label {
+    font-size: 12px;
+    color: var(--text-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    background: var(--bg);
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--text-mid);
+    text-decoration: none;
+  }
+
+  .footer-logo span { color: var(--teal); }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text-mid); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--text-dim);
+    width: 100%;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 1100px) {
+    .hero-layout { grid-template-columns: 1fr; }
+    .hero-logo-card { max-width: 320px; }
+  }
+
+  @media (max-width: 900px) {
+    .wrap { padding: 0 24px; }
+
+    .nav-links { display: none; }
+
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      gap: 16px;
+      z-index: 99;
+    }
+
+    .nav-hamburger { display: block; }
+    .hosts-grid, .two-col { grid-template-columns: 1fr; }
+
+    .newsletter-inner {
+      grid-template-columns: 1fr;
+      padding: 36px 28px;
+    }
+
+    .nl-form { min-width: unset; }
+    .stats-bar { flex-direction: column; gap: 24px; align-items: flex-start; }
+    .stat-divider { display: none; }
+    .stat-platforms { margin-left: 0; }
+    .episodes-grid { grid-template-columns: 1fr; }
+    .sponsor-stats { grid-template-columns: 1fr 1fr; }
+    #hero { padding: 60px 0 48px; }
+    section { padding: 56px 0; }
+  }
+
+  @media (max-width: 540px) {
+    .hero-h1 { font-size: 44px; }
+    .sponsor-stats { grid-template-columns: 1fr; }
+    .nav-cta { display: none; }
+    .hero-logo-card { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#" class="logo">Breakthrough <span>SaaS</span> Growth</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#episodes">Episodes</a></li>
+      <li><a href="#hosts">Hosts</a></li>
+      <li><a href="#waitlist">Join the waitlist</a></li>
+      <li><a href="#suggest">Suggest a Guest</a></li>
+      <li><a href="#sponsor">Partner with Us</a></li>
+    </ul>
+    <a href="https://podcasts.apple.com/gb/podcast/breakthrough-saas-growth/id1450638487" target="_blank" class="nav-cta" rel="noopener">Listen on Apple ↗</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="wrap">
+    <div class="hero-layout">
+      <div class="hero-copy-wrap">
+        <p class="hero-eyebrow anim-1">Podcast · Customer Success · SaaS Growth</p>
+        <h1 class="hero-h1 anim-2">Real talk on<br>scaling <em>SaaS</em><br>that sticks.</h1>
+        <p class="hero-sub anim-3">Jason Noble and Jason Whitehead go deep with founders, CS leaders and growth executives on what actually works when building subscription businesses.</p>
+        <div class="hero-ctas anim-4">
+          <a href="https://podcasts.apple.com/gb/podcast/breakthrough-saas-growth/id1450638487" target="_blank" class="btn-primary" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1C4.134 1 1 4.134 1 8s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7zm2.955 7.553L6.598 11.13A.625.625 0 015.625 10.577V5.423a.625.625 0 01.973-.553l4.357 2.577a.625.625 0 010 1.106z" fill="currentColor"/>
+            </svg>
+            Listen on Apple Podcasts
+          </a>
+          <a href="https://open.spotify.com/show/2NeT7ScGXKyx8SDtqrUCsz" target="_blank" class="btn-ghost" rel="noopener">Open on Spotify →</a>
+        </div>
+      </div>
+
+      <div class="hero-media anim-5">
+        <div class="hero-logo-card">
+          <img src="BSG_Portrait_FINAL.png" alt="Breakthrough SaaS Growth cover art">
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-num">2,500+</span>
+        <span class="stat-label">Subscribers</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">100+</span>
+        <span class="stat-label">Episodes</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">60+</span>
+        <span class="stat-label">Expert Guests</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-platforms">
+        <a href="https://podcasts.apple.com/gb/podcast/breakthrough-saas-growth/id1450638487" target="_blank" class="platform-pill primary" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1a6 6 0 100 12A6 6 0 007 1zm0 2a4 4 0 110 8A4 4 0 017 3zm-.5 1.75v4.5l3.5-2.25-3.5-2.25z" fill="currentColor"/></svg>
+          Apple Podcasts
+        </a>
+        <a href="https://open.spotify.com/show/2NeT7ScGXKyx8SDtqrUCsz" target="_blank" class="platform-pill" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 5.5c1.5-.5 3.5-.5 5 .5M4 7.5c1.8-.6 4-.6 6 .3M4.5 9.5c1.5-.4 3-.4 4.5.2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+          Spotify
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="episodes">
+  <div class="wrap">
+    <p class="section-label">Popular Episodes</p>
+    <h2 class="section-title">Conversations that<br><em>move the needle</em></h2>
+    <p class="section-sub">Practical strategies from people who've actually built and scaled SaaS businesses. No fluff, no theory - just what works.</p>
+
+    <div class="episodes-grid">
+      <div class="ep-card">
+        <div class="ep-meta">
+          <span class="ep-num">Featured</span>
+          <div class="ep-tags">
+            <span class="ep-tag">Psychology</span>
+            <span class="ep-tag">Motivation</span>
+          </div>
+        </div>
+        <h3 class="ep-title">The Psychology of Customer Success</h3>
+        <p class="ep-desc">How do we know what makes our customers tick? Their motivations, values and individual needs. A fascinating deep-dive into customer psychology.</p>
+        <div class="ep-player">
+          <iframe
+            src="https://open.spotify.com/embed/episode/2AnhenHgNO1z5HUSb78Pq2?utm_source=generator&theme=0"
+            height="80"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="ep-links">
+          <a href="https://podcasts.apple.com/gb/podcast/the-jasons-take-on/id1450638487" target="_blank" class="ep-link" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M5 4l4 2.5L5 9V4z" fill="currentColor"/></svg>
+            Apple Podcasts
+          </a>
+        </div>
+      </div>
+
+      <div class="ep-card">
+        <div class="ep-meta">
+          <span class="ep-num">Featured</span>
+          <div class="ep-tags">
+            <span class="ep-tag">AI</span>
+            <span class="ep-tag">Churn Reduction</span>
+          </div>
+        </div>
+        <h3 class="ep-title">Leveraging AI for Growth in B2B SaaS</h3>
+        <p class="ep-desc">Practical ways AI can enhance B2B SaaS growth by improving efficiency, reducing churn and enhancing customer engagement. Real applications, not hype.</p>
+        <div class="ep-player">
+          <iframe
+            src="https://open.spotify.com/embed/episode/1fDQhWvvdwWjlvHgiEdhsr?utm_source=generator&theme=0"
+            height="80"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="ep-links">
+          <a href="https://podcasts.apple.com/gb/podcast/the-jasons-take-on/id1450638487" target="_blank" class="ep-link" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M5 4l4 2.5L5 9V4z" fill="currentColor"/></svg>
+            Apple Podcasts
+          </a>
+        </div>
+      </div>
+
+      <div class="ep-card">
+        <div class="ep-meta">
+          <span class="ep-num">Featured</span>
+          <div class="ep-tags">
+            <span class="ep-tag">Offboarding</span>
+            <span class="ep-tag">Retention</span>
+          </div>
+        </div>
+        <h3 class="ep-title">Handling Customer Exits: Offboarding Done Right</h3>
+        <p class="ep-desc">The often-overlooked topic of managing customer exits. How companies can turn churn into learning opportunities and positive lasting impressions.</p>
+        <div class="ep-player">
+          <iframe
+            src="https://open.spotify.com/embed/episode/77FGJ1o2EWvqARA3M7CfXr?utm_source=generator&theme=0"
+            height="80"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="ep-links">
+          <a href="https://podcasts.apple.com/gb/podcast/the-jasons-take-on/id1450638487" target="_blank" class="ep-link" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M5 4l4 2.5L5 9V4z" fill="currentColor"/></svg>
+            Apple Podcasts
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="https://podcasts.apple.com/gb/podcast/breakthrough-saas-growth/id1450638487" target="_blank" class="btn-primary" rel="noopener" style="display: inline-flex;">
+        Browse all episodes on Apple Podcasts ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="hosts">
+  <div class="wrap">
+    <p class="section-label">Your Hosts</p>
+    <h2 class="section-title">Two Jasons.<br><em>Decades of experience.</em></h2>
+    <p class="section-sub">Between them, Jason Noble and Jason Whitehead have spent 50+ years inside SaaS businesses at every stage of growth.</p>
+
+    <div class="hosts-grid">
+      <div class="host-card">
+        <div class="host-header">
+          <div class="host-avatar">JN</div>
+          <div>
+            <h3 class="host-name">Jason Noble</h3>
+            <p class="host-title">Customer Success &amp; SaaS Growth Leader</p>
+          </div>
+        </div>
+        <p class="host-bio">Jason is an experienced technology executive with over 30 years in customer success, digital transformation and customer growth. He has led global post-sales teams, driven customer-led growth strategies and helped organisations scale through stronger customer engagement. His background spans startup scaling to enterprise transformation - giving him a rare perspective on the challenges businesses face at every stage.</p>
+        <div class="host-links">
+          <a href="https://www.linkedin.com/in/jasonnoble1/" target="_blank" class="host-link" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1"/><path d="M4 6v4M4 4.5v.01M7 10V7.5c0-.8.7-1.5 1.5-1.5S10 6.7 10 7.5V10M7 6v4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.jasonnoble.co.uk" target="_blank" class="host-link" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 1.5c-1.5 2-1.5 9 0 11M1.5 7h11M2 4.5h10M2 9.5h10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+            Website
+          </a>
+        </div>
+      </div>
+
+      <div class="host-card">
+        <div class="host-header">
+          <div class="host-avatar">JW</div>
+          <div>
+            <h3 class="host-name">Jason Whitehead</h3>
+            <p class="host-title">Customer Success &amp; User Adoption Expert</p>
+          </div>
+        </div>
+        <p class="host-bio">Jason helps organisations maximise the value of their software investments by driving effective user adoption and lasting business outcomes. He works with SaaS vendors and enterprise buyers to improve customer success strategies and execution. With deep expertise in user adoption methodologies and customer onboarding, he has helped dozens of organisations transform their approach to customer success and achieve measurable growth.</p>
+        <div class="host-links">
+          <a href="https://www.linkedin.com/in/jasonwhitehead/" target="_blank" class="host-link" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1"/><path d="M4 6v4M4 4.5v.01M7 10V7.5c0-.8.7-1.5 1.5-1.5S10 6.7 10 7.5V10M7 6v4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.jasonwhitehead.me/" target="_blank" class="host-link" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1"/><path d="M7 1.5c-1.5 2-1.5 9 0 11M1.5 7h11M2 4.5h10M2 9.5h10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+            Website
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="waitlist">
+  <div class="wrap">
+    <div class="newsletter-inner">
+      <div>
+        <p class="section-label">Join the waitlist</p>
+        <h2 class="nl-title">Something exciting is coming.</h2>
+        <p class="nl-sub">Want to be first to hear about new ideas, projects and what comes next from Breakthrough SaaS Growth with The Jasons?</p>
+      </div>
+      <div class="nl-form">
+        <a class="btn-primary" href="mailto:jasons@breakthroughsaasgrowth.com?subject=Joining%20the%20waitlist%20for%20something%20exciting" rel="noopener" style="width:100%; justify-content:center;">
+          Join the waitlist
+        </a>
+        <p class="nl-note">This opens an email to us so you can register your interest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section id="suggest">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="info-card">
+        <p class="section-label">Suggest a Guest</p>
+        <h2 class="section-title" style="font-size: 28px;">Know someone<br>worth hearing?</h2>
+        <p style="font-size: 14px; color: var(--text-mid); line-height: 1.7; font-weight: 300; margin-bottom: 8px;">We're particularly interested in leaders who have:</p>
+        <ul class="info-list">
+          <li>Navigated significant challenges in scaling SaaS</li>
+          <li>Built innovative CS or growth solutions</li>
+          <li>Contrarian views on conventional SaaS wisdom</li>
+          <li>Real stories of failure and what they learned</li>
+        </ul>
+
+        <div class="suggest-form">
+          <p class="section-sub">Know someone we should have on? Send us a quick note and we’ll take it from there.</p>
+          <a class="btn-primary" href="mailto:jasons@breakthroughsaasgrowth.com?subject=Podcast%20guest%20suggestion&body=Hi%20Jasons%0A%0AWe%E2%80%99d%20like%20to%20suggest%20this%20guest%20for%20your%20podcast%3A%0A%0AName%3A%20%0ACompany%3A%20%0AEmail%3A%20%0ABio%3A%20%0ASuggestion%20background%3A%20" rel="noopener">
+            Suggest a guest
+          </a>
+        </div>
+      </div>
+
+      <div class="info-card" id="sponsor">
+        <p class="section-label">Partner with Us</p>
+        <h2 class="section-title" style="font-size: 28px;">Reach SaaS<br><em>decision makers</em></h2>
+        <p style="font-size: 14px; color: var(--text-mid); line-height: 1.7; font-weight: 300; margin-bottom: 24px;">Our audience consists of customer success leaders, SaaS founders and growth professionals who make real technology and service decisions.</p>
+
+        <div class="sponsor-stats">
+          <div class="sponsor-stat">
+            <div class="sponsor-stat-num">2,500+</div>
+            <div class="sponsor-stat-label">Subscribers</div>
+          </div>
+          <div class="sponsor-stat">
+            <div class="sponsor-stat-num">Global</div>
+            <div class="sponsor-stat-label">Audience</div>
+          </div>
+          <div class="sponsor-stat">
+            <div class="sponsor-stat-num">B2B</div>
+            <div class="sponsor-stat-label">Focused</div>
+          </div>
+        </div>
+
+        <div class="sponsor-form">
+          <p class="section-sub">Interested in sponsorship or a commercial partnership? Let’s have a conversation.</p>
+          <a class="btn-primary" href="mailto:jasons@breakthroughsaasgrowth.com?subject=Work%20with%20us%20enquiry&body=Hi%20Jasons%0A%0AWe%E2%80%99d%20like%20to%20look%20at%20working%20with%20you%20and%20your%20podcast%3A%0A%0AName%3A%20%0ACompany%3A%20%0AEmail%3A%20%0AProposal%20summary%3A%20" rel="noopener">
+            Work with us
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <a href="#" class="footer-logo">Breakthrough <span>SaaS</span> Growth</a>
+      <div class="footer-links">
+        <a href="https://podcasts.apple.com/gb/podcast/breakthrough-saas-growth/id1450638487" target="_blank" rel="noopener">Apple Podcasts</a>
+        <a href="https://open.spotify.com/show/2NeT7ScGXKyx8SDtqrUCsz" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://www.linkedin.com/company/breakthrough-saas-growth/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/breakthrusaas" target="_blank" rel="noopener">X</a>
+        <a href="#waitlist">Join the waitlist</a>
+        <a href="#suggest">Contact</a>
+      </div>
+      <p class="footer-copy">© 2026 Breakthrough SaaS Growth with The Jasons. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+      navLinks.classList.remove('open');
+    }
+  });
+
+  const sections = document.querySelectorAll('section[id], div[id="sponsor"]');
+  const navAs = document.querySelectorAll('.nav-links a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navAs.forEach(a => {
+          a.style.color = a.getAttribute('href') === '#' + entry.target.id ? 'var(--teal)' : '';
+        });
+      }
+    });
+  }, { threshold: 0.35 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
