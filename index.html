@@ -834,6 +834,112 @@
     .nav-cta { display: none; }
     .hero-logo-card { max-width: 100%; }
   }
+
+
+  .modal-trigger {
+    border: none;
+    cursor: pointer;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(3, 8, 18, 0.82);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  .modal-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-panel {
+    width: min(720px, 100%);
+    max-height: min(88vh, 920px);
+    overflow-y: auto;
+    background: linear-gradient(135deg, rgba(20,29,46,0.98), rgba(13,19,33,0.98));
+    border: 1px solid rgba(40,195,255,0.22);
+    border-radius: 18px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+    padding: 28px 28px 24px;
+    position: relative;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid var(--border2);
+    background: rgba(255,255,255,0.03);
+    color: var(--text);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .modal-close:hover {
+    border-color: rgba(40,195,255,0.35);
+    color: var(--teal);
+  }
+
+  .modal-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 230, 0.42);
+    margin-bottom: 14px;
+    padding-right: 52px;
+  }
+
+  .modal-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .modal-sub {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 24px;
+    max-width: 560px;
+  }
+
+  .modal-form-wrap {
+    min-height: 120px;
+  }
+
+  .modal-note {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  body.modal-open {
+    overflow: hidden;
+  }
+
+  @media (max-width: 640px) {
+    .modal-panel {
+      padding: 22px 18px 18px;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -1088,9 +1194,9 @@
         <p class="nl-sub">The Jasons are building something new. Want to be first in the door when it launches?</p>
       </div>
       <div class="nl-form">
-        <a class="btn-primary" href="mailto:jasons@breakthroughsaasgrowth.com?subject=Waitlist%20request&body=Name:%0AEmail:%0ACompany:%0ARole:%0A%0AWhat%20are%20you%20most%20interested%20in%20hearing%20about?%0A">
+        <button class="btn-primary modal-trigger" type="button" data-modal="waitlist">
           Join the waitlist
-        </a>
+        </button>
         </div>
     </div>
   </div>
@@ -1114,9 +1220,9 @@
 
         <div class="suggest-form">
           <p class="section-sub">Know someone we should have on? Send us a quick note and we’ll take it from there.</p>
-          <a class="btn-primary" href="mailto:jasons@breakthroughsaasgrowth.com?subject=Guest%20suggestion&body=Your%20name:%0AYour%20email:%0A%0AGuest%20name:%0AGuest%20role%20and%20company:%0AGuest%20email%20or%20LinkedIn:%0A%0AWhy%20would%20they%20be%20a%20great%20guest?%0A%0AShort%20guest%20bio:%0A%0ARelevant%20links:%0A">
+          <button class="btn-primary modal-trigger" type="button" data-modal="guest">
             Suggest a guest
-          </a>
+          </button>
         </div>
       </div>
 
@@ -1146,9 +1252,9 @@
 
         <div class="sponsor-form">
           <p class="section-sub">Interested in sponsorship or a commercial partnership? Let's talk.</p>
-          <a class="btn-primary" href="mailto:jasons@breakthroughsaasgrowth.com?subject=Podcast%20sponsorship%20enquiry&body=Name:%0AEmail:%0ACompany:%0ARole:%0A%0AWhat%20would%20you%20like%20to%20promote?%0A%0AWhat%20are%20your%20goals?%0A%0AApproximate%20budget:%0A%0APreferred%20timing:%0A%0AAnything%20else%20we%20should%20know?%0A">
+          <button class="btn-primary modal-trigger" type="button" data-modal="partner">
             Work with us
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -1228,5 +1334,104 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  const navLinks  = document.getElementById('nav-links');
+
+
+<div class="modal-overlay" id="site-modal" aria-hidden="true">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" type="button" aria-label="Close modal">&times;</button>
+    <p class="modal-label" id="modal-label"></p>
+    <h2 class="modal-title" id="modal-title"></h2>
+    <p class="modal-sub" id="modal-sub"></p>
+    <div class="modal-form-wrap" id="modal-form-wrap"></div>
+    <p class="modal-note" id="modal-note"></p>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="https://resources-app.encharge.io/embed-production.min.js" class="encharge-form-embed-script" type="text/javascript"></script>
+<script>
+  const modal = document.getElementById('site-modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalLabel = document.getElementById('modal-label');
+  const modalSub = document.getElementById('modal-sub');
+  const modalFormWrap = document.getElementById('modal-form-wrap');
+  const modalNote = document.getElementById('modal-note');
+  const closeBtn = document.querySelector('.modal-close');
+
+  const modalContent = {
+    waitlist: {
+      label: 'Join the waitlist',
+      title: 'Be first to hear what is coming.',
+      sub: 'Join the waitlist to hear what The Jasons are building and get updates when it launches.',
+      formId: '5fbe5397-de02-4dba-a586-4452be26b575',
+      note: 'We will only use your details for relevant updates. No nonsense.'
+    },
+    guest: {
+      label: 'Suggest a guest',
+      title: 'Know someone worth hearing from?',
+      sub: 'Send us a recommendation and a little context on why they would make a strong guest.',
+      formId: '5fbe5397-de02-4dba-a586-4452be26b575',
+      note: 'A name, role and one good reason is enough.'
+    },
+    partner: {
+      label: 'Partner with us',
+      title: 'Reach a SaaS audience that cares about growth.',
+      sub: 'Interested in sponsorship or a commercial partnership? Share a few details and we will come back to you.',
+      formId: '5fbe5397-de02-4dba-a586-4452be26b575',
+      note: 'Tell us what you want to promote and what a good outcome looks like.'
+    }
+  };
+
+  function renderEnchargeForm(formId) {
+    modalFormWrap.innerHTML = '<div class="encharge-form-embed" data-encharge-form-id="' + formId + '"></div>';
+
+    if (window.EnchargeForms && typeof window.EnchargeForms.init === 'function') {
+      window.EnchargeForms.init();
+    } else if (window.encharge && typeof window.encharge.init === 'function') {
+      window.encharge.init();
+    }
+  }
+
+  function openModal(type) {
+    const content = modalContent[type];
+    if (!content) return;
+
+    modalLabel.textContent = content.label;
+    modalTitle.textContent = content.title;
+    modalSub.textContent = content.sub;
+    modalNote.textContent = content.note;
+
+    renderEnchargeForm(content.formId);
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    modalFormWrap.innerHTML = '';
+  }
+
+  document.querySelectorAll('.modal-trigger').forEach((button) => {
+    button.addEventListener('click', function () {
+      openModal(this.dataset.modal);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+</script>
+</body>
+</html>
